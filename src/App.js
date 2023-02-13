@@ -12,6 +12,7 @@ const App = () => {
   const [selectedCompany, setSelectedCompany] = useState("");
   const [networkData, setNetworkData] = useState([]);
 
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const getCitiesAndCompanies = () => {
@@ -35,9 +36,9 @@ const App = () => {
         setNetworkData(res.data.networks);
         setLoading(false);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         setLoading(false);
+        setErrorMessage("Try again!");
       });
   };
 
@@ -78,6 +79,7 @@ const App = () => {
           selectedCompany={selectedCompany}
           companyDataResult={companyDataResult}
         />
+        {errorMessage && <p className="error"> {errorMessage} </p>}
       </div>
       <MapChart />
     </>

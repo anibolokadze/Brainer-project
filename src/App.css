@@ -26,3 +26,7 @@ select {
 label {
   margin: 10px 40px 5px 0;
 }
+
+.error {
+  color: red;
+}
